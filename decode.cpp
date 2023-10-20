@@ -42,30 +42,29 @@ bool checkIsPrime(int val) {
     return valid;
 }
 
-std::vector<int>& decrypt(int& m , int& d, const int& n, std::vector<int>& M ) {
-    std::cout << "--- Make decrypt function ---" << std::endl;
-    while (m > 0) {
-    int val = 1;
-    d = 1031;
-    while(d > 1) {
-            if(d%2 == 0) {
-                m = fmod(pow(m,2),n);
-                d = d/2;
-            }
-            else {
-                val = val*m;
-                m = fmod(pow(m,2),n);
-                d = (d-1)/2;
-            }
-            if(val > n) {
-                val = val%n;
-            }
-            cout << val << " " << d  << " " << m <<endl;
-    }
-    cout << (val*m)%n << endl;
-    M.push_back((val*m)%n);
-    cin >> m;
-    cout << endl;
+std::vector<int>& decrypt(int& m_num , int& d, const int& n, std::vector<int>& M ) {
+    int m;
+    for(int i = 0; i < m_num; i++) {
+        cin >> m;
+        int val = 1;
+        d = 1031;
+        while(d > 1) {
+                if(d%2 == 0) {
+                    m = fmod(pow(m,2),n);
+                    d = d/2;
+                }
+                else {
+                    val = val*m;
+                    m = fmod(pow(m,2),n);
+                    d = (d-1)/2;
+                }
+                if(val > n) {
+                    val = val%n;
+                }
+                //cout << val << " " << d  << " " << m <<endl;
+        }
+        //cout << (val*m)%n << endl;
+        M.push_back((val*m)%n);
     }
     return M;
 }
