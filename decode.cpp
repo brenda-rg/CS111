@@ -18,14 +18,14 @@ e(mod(phi(n))) = 1
 
 bool valid = 0;
 
-bool verifyPubKey(int P_e, int P_n, int d, int phi_n, int p, int q) {
+bool verifyPubKey(int e, int n, int d, int phi_n, int p, int q) {
     std::cout << "--- Make verifyPubKey fucntion ---" << std::endl;
-    return valid;
+    return checkIsPrime(n);
 }
 
 bool findFactors(const int& n, int& p, int&q) {
     std::cout << "--- Make findFactors function ---" << std::endl;
-    return valid;
+    return checkIsPrime(p) && checkIsPrime(q);
 }
 
 bool findPhi_n(const int& p, const int& q, int& phi_n) {
@@ -38,8 +38,17 @@ bool findD(int p) {
     return valid;
 }
 
-bool checkIsPrime(int val) {
-    return valid;
+//code taken from geeksforgeeks :: https://www.geeksforgeeks.org/prime-numbers/
+bool checkIsPrime(const int& n) {
+    if(n <= 1) {
+        return false;
+    }
+    for(int i = 2; i <= sqrt(n); i++) {
+        if(n%i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 std::vector<int>& decrypt(int& m_num , int& d, const int& n, std::vector<int>& M ) {

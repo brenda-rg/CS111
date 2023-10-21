@@ -19,7 +19,7 @@ Secret key = (d,n)
 e(mod(phi(n))) = 1
 */
 
-bool verifyPubKey(int P_e, int P_n, int d, int phi_n, int p, int q);
+bool verifyPubKey(int e, int n, int d, int phi_n, int p, int q);
 
 bool findFactors(const int& n, int& p, int&q);
 
@@ -27,7 +27,7 @@ bool findPhi_n(const int& p, const int& q, int& phi_n);
 
 bool findD(int p);
 
-bool checkIsPrime(int val);
+bool checkIsPrime(const int& n);
 
 std::vector<int>& decrypt(int& m, int& d, const int& n, std::vector<int>& M );
 

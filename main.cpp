@@ -29,7 +29,7 @@ int main() {
     std::cout << "Please enter  e, n (the public key for RSA), and m (the number of characters in the message)" << std::endl;
     std::cin >> e >> n >> m;
 
-    verifyPubKey(e, n, d, phi_n, p, q);
+    std::cout << verifyPubKey(e, n, d, phi_n, p, q) << std::endl;
     M = decrypt(m,d,n,M);
     M_e = convertToChar(Legend, M, M_e);
     outputM(M);
