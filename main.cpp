@@ -41,7 +41,7 @@ int main() {
     }
 
     //--------- var values ----------
-    std::cout << p << ' ' << q << ' ' << phi_n << std::endl;
+    std::cout << p << ' ' << q << ' ' << phi_n << ' ' << d << std::endl;
 
     //Decrypt Message
     M = decrypt(m,d,n,M);

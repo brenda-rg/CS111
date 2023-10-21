@@ -25,11 +25,13 @@ bool findFactors(const int& n, int& p, int&q);
 
 int findPhi_n(const int& p, const int& q);
 
-bool findD(int p);
+bool checkRPrime(const int& e, const int& phi_n);
+
+int findD(const int& e, const int& phi_n);
 
 bool checkIsPrime(int& val);
 
-std::vector<int>& decrypt(int& m, int& d, const int& n, std::vector<int>& M );
+std::vector<int>& decrypt(const int& m, const int& d, const int& n, std::vector<int>& M );
 
 std::vector<char>& convertToChar(const std::vector<char> Legend,std::vector<int>& M, std::vector<char>& M_e);
 
