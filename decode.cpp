@@ -18,19 +18,30 @@ e(mod(phi(n))) = 1
 
 bool valid = 0;
 
-bool verifyPubKey(int e, int n, int d, int phi_n, int p, int q) {
+bool verifyPubKey(int& e, int& n, int& d, int& phi_n, int& p, int& q) {
     std::cout << "--- Make verifyPubKey fucntion ---" << std::endl;
-    return checkIsPrime(n);
+    if(findFactors(n,p,q)) {
+        phi_n = findPhi_n(p,q);
+    }
+    
+    return findFactors(n,p,q);
 }
 
 bool findFactors(const int& n, int& p, int&q) {
-    std::cout << "--- Make findFactors function ---" << std::endl;
-    return checkIsPrime(p) && checkIsPrime(q);
+    for (int i = 2; i <= n/2; i++) {
+        if(n%i == 0) {
+            p = i;
+            q = n/i;
+            if(checkIsPrime(p) && checkIsPrime(q)) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
-bool findPhi_n(const int& p, const int& q, int& phi_n) {
-    std::cout << "--- Make findPhi_n function ---" << std::endl;
-    return valid;
+int findPhi_n(const int& p, const int& q) {
+    return (p-1)*(q-1);
 }
 
 bool findD(int p) {
@@ -39,12 +50,14 @@ bool findD(int p) {
 }
 
 //code taken from geeksforgeeks :: https://www.geeksforgeeks.org/prime-numbers/
-bool checkIsPrime(const int& n) {
-    if(n <= 1) {
+bool checkIsPrime(int& val) {
+    if(val <= 1) {
+        val = 0;
         return false;
     }
-    for(int i = 2; i <= sqrt(n); i++) {
-        if(n%i == 0) {
+    for(int i = 2; i <= sqrt(val); i++) {
+        if(val%i == 0) {
+            val = 0;
             return false;
         }
     }

@@ -19,6 +19,8 @@
 using namespace std;
 
 int main() {
+
+    //-- declare & initialize vars --
     int e,n,m,p,q,phi_n,d = 0;
     std::vector<int> M;
     std::vector<char> M_e;
@@ -26,12 +28,26 @@ int main() {
      'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
       'V', 'W', 'X', 'Y', 'Z', ' ', '\"', ',', '.', '\''};
 
+    //remove for turnin 
     std::cout << "Please enter  e, n (the public key for RSA), and m (the number of characters in the message)" << std::endl;
+
+    //------- take in inputs --------
     std::cin >> e >> n >> m;
 
-    std::cout << verifyPubKey(e, n, d, phi_n, p, q) << std::endl;
+    //-- test if Public Key is Valid --
+    if (verifyPubKey(e, n, d, phi_n, p, q) == 0) {
+        std::cout << "Public key is not valid!" << std::endl;
+        exit(1);
+    }
+
+    //--------- var values ----------
+    std::cout << p << ' ' << q << ' ' << phi_n << std::endl;
+
+    //Decrypt Message
     M = decrypt(m,d,n,M);
     M_e = convertToChar(Legend, M, M_e);
+
+    //-- Output message in numbers and english
     outputM(M);
     std::cout << std::endl;
     outputM_e(M_e);
